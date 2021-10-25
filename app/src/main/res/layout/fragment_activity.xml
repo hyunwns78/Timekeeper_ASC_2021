@@ -10,19 +10,8 @@
     <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:background="#FDDFEA"/>
-
-
-        <ImageView
-            android:id="@+id/back_arrow"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:padding="15dp"
-            android:src="@drawable/back"
-            />
 
         <TextView
             android:layout_width="match_parent"
@@ -30,15 +19,12 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/back_arrow"
-            android:layout_toRightOf="@+id/back_arrow"
+            android:paddingTop="10dp"
+            android:layout_alignParentLeft="true"
             android:text="카테고리"
             android:textColor="#111111"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:textStyle="bold" />
-
-
-
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tlselect"
@@ -47,10 +33,9 @@
         android:background="#FDFBEA"
         app:tabSelectedTextColor="#111111"
         android:textColor="#111111"
-
-        app:tabTextColor="@color/white"
-        app:tabIndicatorColor="#ddee11"
-        app:tabIndicatorHeight="3dp"
+        app:tabTextColor="#A3A2A2"
+        app:tabIndicatorColor="#D6C951"
+        app:tabIndicatorHeight="5dp"
         >
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabCalories"

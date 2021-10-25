@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                         switch (item.getItemId()){
                             case R.id.tab_main:
                                 getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment_main).commit();
+                                return true;
                             case R.id.tab_activty:
                                 getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment_activity).commit();
                                 return true;

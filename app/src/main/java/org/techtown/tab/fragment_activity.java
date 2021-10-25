@@ -62,14 +62,6 @@ public class fragment_activity extends Fragment {
         setHasOptionsMenu(true);
       //  methods =new Methods(activity);
 
-        ImageView imageView = (ImageView) inflate.findViewById(R.id.back_arrow);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.onBackPressed();
-            }
-        });
-
         this.caloriesStatsLayout = (LinearLayout) inflate.findViewById(R.id.caloriesStatsLayout);
         this.weightStatsLayout = (LinearLayout) inflate.findViewById(R.id.weightStatsLayout);
         this.caloriesListView = (ListView) inflate.findViewById(R.id.caloriesListView);
