@@ -11,7 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -54,7 +56,9 @@ public class fragment_main extends Fragment {
         recyclerView = rootView.findViewById(R.id.recycler);
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(context, 3, LinearLayoutManager.HORIZONTAL, false);
-
+        SnapHelper snapHelper = new PagerSnapHelper();
+        recyclerView.setLayoutManager(layoutManager);
+        snapHelper.attachToRecyclerView(recyclerView);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new Myadapter(insertItem()));
     }

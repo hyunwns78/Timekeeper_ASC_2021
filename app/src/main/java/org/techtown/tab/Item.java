@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.github.mikephil.charting.charts.BarChart;
 
-public class Item extends item_view{
+public class Item{
 
 
     private String activity;
