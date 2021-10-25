@@ -60,29 +60,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="334dp"
         android:layout_weight="5">
+
         <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/piechart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            android:id="@+id/piechart"/>
+            android:layout_margin="20dp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5"
         android:background="#F6E6CD">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="68dp"
-            android:background="#FFF3E1">
-
-        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler"/>
 
 
 
