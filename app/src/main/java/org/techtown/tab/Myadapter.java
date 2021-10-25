@@ -21,8 +21,8 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.ViewHolder> {
     private ArrayList<Item> itemList;
     private Context context;
     private Intent intent;
-    private BarChart barChart;
-    ImageView imageView;
+
+
 
     public Myadapter(ArrayList<Item> itemList){
         this.itemList = itemList;
@@ -41,6 +41,8 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.actView.setText(itemList.get(position).getItem_activity());
         holder.timeView.setText(itemList.get(position).getItem_time());
+        holder.ing.getLayoutParams().width = itemList.get(position).getItem_hour()*100;
+        holder.pad.getLayoutParams().width = 1000-itemList.get(position).getItem_hour()*100;
     }
 
     public int getItemCount(){
@@ -50,11 +52,15 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder{
         public TextView timeView;
         public TextView actView;
+        public TextView ing;
+        public TextView pad;
 
         public ViewHolder (@NonNull View itemView){
             super(itemView);
             timeView = itemView.findViewById(R.id.time);
             actView = itemView.findViewById(R.id.activity);
+            ing = itemView.findViewById(R.id.ing_bar);
+            pad = itemView.findViewById(R.id.pad_bar);
         }
     }
 }

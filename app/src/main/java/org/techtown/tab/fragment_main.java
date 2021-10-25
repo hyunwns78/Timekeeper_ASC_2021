@@ -35,6 +35,7 @@ public class fragment_main extends Fragment {
     public RecyclerView recyclerView;
     ArrayList<Item> itemList;
     Context context;
+    Bundle bundle;
 
     @Nullable
     @Override
@@ -52,7 +53,7 @@ public class fragment_main extends Fragment {
     public void initImage(ViewGroup rootView){
         recyclerView = rootView.findViewById(R.id.recycler);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(context, 3, LinearLayoutManager.HORIZONTAL, false);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new Myadapter(insertItem()));
@@ -60,10 +61,10 @@ public class fragment_main extends Fragment {
 
     ArrayList insertItem(){
         itemList = new ArrayList<Item>();
-        Item item1 = new Item("JAVA 공부", "2시간");
-        Item item2 = new Item("Python 공부", "3시간");
-        Item item3 = new Item("C언어 공부", "0시간");
-        Item item4 = new Item("안드로이드 공부", "4시간");
+        Item item1 = new Item("JAVA 공부", "2시간", 2);
+        Item item2 = new Item("Python 공부", "3시간", 3);
+        Item item3 = new Item("C언어 공부", "0시간", 0);
+        Item item4 = new Item("안드로이드 공부", "4시간", 4);
 
         itemList.add(item1);
         itemList.add(item2);
