@@ -9,12 +9,17 @@ import android.content.ClipData;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
+
 
     fragment_main fragment_main;
     fragment_activity fragment_activity;
@@ -24,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         fragment_main = new fragment_main();
         fragment_activity = new fragment_activity();
@@ -51,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
     }
 
 }
