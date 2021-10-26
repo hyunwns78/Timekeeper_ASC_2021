@@ -5,49 +5,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.google.android.material.tabs.TabLayout;
-
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.zip.Inflater;
 
 public class fragment_activity extends Fragment {
 
-    private BarChart caloriesBarChart;
-    ListView caloriesListView;
-    //CaloriesStatsAdapter caloriesStatsAdapter;
-    LinearLayout caloriesStatsLayout;
-    //List<DaysFoodModel> daysFoodList;
-    private BarChart weightBarChart;
-    ListView weightListView;
-    //WeightStatsAdapter weightStatsAdapter;
-    LinearLayout weightStatsLayout;
+    ListView studyListView;
+    LinearLayout studyLayout;
+    ListView hobbyListView;
+    LinearLayout hobbyLayout;
+    LinearLayout restLayout;
+    ListView restListView;
+    Button button;
 
     MainActivity activity;
-    //Methods methods;
 
     public fragment_activity() {
-        //add code
     }
 
     @Override
@@ -60,12 +40,22 @@ public class fragment_activity extends Fragment {
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View inflate = layoutInflater.inflate(R.layout.fragment_activity, viewGroup, false);
         setHasOptionsMenu(true);
+        button = inflate.findViewById(R.id.button_insert);
       //  methods =new Methods(activity);
 
-        this.caloriesStatsLayout = (LinearLayout) inflate.findViewById(R.id.caloriesStatsLayout);
-        this.weightStatsLayout = (LinearLayout) inflate.findViewById(R.id.weightStatsLayout);
-        this.caloriesListView = (ListView) inflate.findViewById(R.id.caloriesListView);
-        this.weightListView = (ListView) inflate.findViewById(R.id.weightListView);
+        this.studyLayout = (LinearLayout) inflate.findViewById(R.id.study);
+        this.hobbyLayout = (LinearLayout) inflate.findViewById(R.id.hobby);
+        this.studyListView = (ListView) inflate.findViewById(R.id.studyView);
+        this.hobbyListView = (ListView) inflate.findViewById(R.id.hobbyView);
+        this.restLayout = (LinearLayout) inflate.findViewById(R.id.rest);
+        this.restListView = (ListView) inflate.findViewById(R.id.restView);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         TabLayout tlselect = (TabLayout) inflate.findViewById(R.id.tlselect);
         tlselect.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -73,20 +63,24 @@ public class fragment_activity extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
 
                 if(tab.getPosition() == 0){
-                    caloriesStatsLayout.setVisibility(View.VISIBLE);
-                    weightStatsLayout.setVisibility(View.GONE);
+                    studyLayout.setVisibility(View.VISIBLE);
+                    hobbyLayout.setVisibility(View.GONE);
+                    restLayout.setVisibility(View.GONE);
                 }
                 else if(tab.getPosition()==1)
                 {
-                    caloriesStatsLayout.setVisibility(View.GONE);
-                    weightStatsLayout.setVisibility(View.VISIBLE);
+                    studyLayout.setVisibility(View.GONE);
+                    hobbyLayout.setVisibility(View.VISIBLE);
+                    restLayout.setVisibility(View.GONE);
                 }
                 else if(tab.getPosition()==2)
                 {
-                    caloriesStatsLayout.setVisibility(View.GONE);
-                    weightStatsLayout.setVisibility(View.VISIBLE);
+                    studyLayout.setVisibility(View.GONE);
+                    hobbyLayout.setVisibility(View.GONE);
+                    restLayout.setVisibility(View.VISIBLE);
                 }
             }
+
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
