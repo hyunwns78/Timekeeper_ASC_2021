@@ -1,6 +1,7 @@
 package org.techtown.tab;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,9 +37,7 @@ public class fragment_activity extends Fragment {
     RadioButton rbtn_study, rbtn_hobby, rbtn_rest;
     EditText dlgEdt_name, dlgEdt_total;
     View dialogView;
-
-    public fragment_activity() {
-    }
+    Context context;
 
     @Override
     public void onAttach(@NonNull Activity activity) {
@@ -52,6 +51,7 @@ public class fragment_activity extends Fragment {
         View inflate = layoutInflater.inflate(R.layout.fragment_activity, viewGroup, false);
         setHasOptionsMenu(true);
 
+        context=viewGroup.getContext();
 
         button = inflate.findViewById(R.id.button_insert);
         //  methods =new Methods(activity);
@@ -67,10 +67,10 @@ public class fragment_activity extends Fragment {
 
             @Override
             public void onClick(View v) {
-                dialogView = (View) View.inflate(fragment_activity,
+                dialogView = (View) View.inflate(context,
                         R.layout.dialog_activity,
                         null);
-                AlertDialog.Builder dlg = new AlertDialog.Builder(fragment_activity);
+                AlertDialog.Builder dlg = new AlertDialog.Builder(context);
                 dlg.setTitle("활동입력창");
                 dlg.setView(dialogView);
                 dlg.setPositiveButton("추가", null);
