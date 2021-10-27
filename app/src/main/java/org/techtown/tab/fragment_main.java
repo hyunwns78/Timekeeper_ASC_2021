@@ -17,19 +17,12 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.MPPointF;
 
 import java.util.ArrayList;
 
@@ -54,11 +47,11 @@ public class fragment_main extends Fragment {
         btnrec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialogView = (View)View.inflate(context,R.layout.dialog1, null);
+                dialogView = (View)View.inflate(context,R.layout.dialog_main, null);
                 AlertDialog.Builder dig = new AlertDialog.Builder(context);
-                dig.setTitle("오늘 활동 기록");
+                dig.setTitle("오늘 활동 기록 추가하기");
                 dig.setView(dialogView);
-                dig.setPositiveButton("확인", null);
+                dig.setPositiveButton("추가", null);
                 dig.setNegativeButton("취소", null);
                 dig.show();
             }

@@ -1,35 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#F3E0A9"
+    android:background="#F0F0D0"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+
+    >
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal">
+
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="카테고리"
-                android:textSize="30sp"/>
+            android:orientation="horizontal"
+            android:id="@+id/mrg"
+
+            >
+
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="공부"/>
+                android:text="공부"
+                android:id="@+id/mrb_study"
+                android:textColor="#ff6a00"
+                android:textStyle="bold"
+                />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="휴식"/>
+                android:text="취미"
+                android:id="@+id/mrb_hobby"
+                android:textColor="#ff6a00"
+                android:textStyle="bold"
+
+                />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="여가 활동"/>
+                android:text="여가 활동"
+                android:id="@+id/mrb_rest"
+                android:textColor="#ff6a00"
+                android:textStyle="bold"
+
+                />
         </RadioGroup>
     </LinearLayout>
 
@@ -42,29 +59,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="활동명"
-            android:textSize="30sp" />
+            android:text="활동명 : "
+            android:textSize="25dp"
+            />
 
         <EditText
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-             />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="68dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="시작 시간"
-            android:textSize="30sp" />
+            android:id="@+id/medt_name"
 
-        <EditText
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
             />
     </LinearLayout>
     <LinearLayout
@@ -76,12 +79,38 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="끝난 시간"
-            android:textSize="30sp" />
+            android:text="시작 시간 : "
+            android:textSize="25dp"
+
+
+            />
 
         <EditText
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/medt_start"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="끝난 시간 : "
+            android:textSize="25dp"
+
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/medt_finish"
+
             />
     </LinearLayout>
 
