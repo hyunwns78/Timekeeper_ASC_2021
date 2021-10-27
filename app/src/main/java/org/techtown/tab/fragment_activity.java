@@ -78,6 +78,7 @@ public class fragment_activity extends Fragment {
                     studyLayout.setVisibility(View.GONE);
                     hobbyLayout.setVisibility(View.GONE);
                     restLayout.setVisibility(View.VISIBLE);
+                    restListView.setVisibility(View.VISIBLE);
                 }
             }
 
