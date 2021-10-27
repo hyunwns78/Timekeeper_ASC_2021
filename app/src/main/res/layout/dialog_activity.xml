@@ -5,7 +5,9 @@
     android:layout_margin="15dp"
     android:background="#F0F0D0"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+
+    >
 
     <RadioGroup
         android:id="@+id/rg"
@@ -17,7 +19,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="학습"
-            android:textColor="#ff6a00" />
+            android:textColor="#ff6a00"
+            android:textStyle="bold"
+
+            />
 
         <RadioButton
             android:id="@+id/rb_hobby"
@@ -25,6 +30,7 @@
             android:layout_height="wrap_content"
             android:text="취미"
             android:textColor="#ff6a00"
+            android:textStyle="bold"
 
 
             />
@@ -35,6 +41,7 @@
             android:layout_height="wrap_content"
             android:text="여가생활"
             android:textColor="#ff6a00"
+            android:textStyle="bold"
 
             />
     </RadioGroup>
@@ -48,25 +55,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="활동 명 : "
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edt_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="활동을 입력하세요." />
+            android:hint="활동을 입력하세요."
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="목표시간 : "
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/total"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="활동의 목표시간을 입력하세요."
+            android:textStyle="bold"
 
             />
     </LinearLayout>
