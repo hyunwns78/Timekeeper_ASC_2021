@@ -49,24 +49,13 @@ public class fragment_main extends Fragment {
         context = container.getContext();
         btnrec= rootView.findViewById(R.id.btnrec);
 
+
         btnrec.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                dialogView = (View)View.inflate(context,R.layout.dialog_main, null);
-                AlertDialog.Builder dig = new AlertDialog.Builder(context);
-                dig.setTitle("오늘 활동 기록 추가하기");
-                dig.setView(dialogView);
-                dig.setPositiveButton("추가", null);
-                dig.setNegativeButton("취소", null);
-                dig.show();
-            }
-        });
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
-                CustomDialog_activity dialog = new CustomDialog_activity(context);
-                dialog.setDialogListener(new CustomDialog_activity.CustomDialogListener() {
+                CustomDialog_main dialog = new CustomDialog_main(context);
+                dialog.setDialogListener(new CustomDialog_main.CustomDialogListener() {
+
                     @Override
                     public void onPositiveClicked(String active_name, String starttime, String endtime) {
 
@@ -82,11 +71,6 @@ public class fragment_main extends Fragment {
                         } catch (Exception e){
                             e.printStackTrace();
                         }
-                    }
-
-                    @Override
-                    public void onPositiveClicked(String active_name, String time) {
-
                     }
 
                     @Override

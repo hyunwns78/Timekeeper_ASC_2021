@@ -108,14 +108,14 @@ public class fragment_activity extends Fragment {
                     public void onPositiveClicked(String active_name, String time) {
 
                         try{
-                            BufferedWriter buf = new BufferedWriter(new FileWriter(context.getFilesDir()+"test.txt", true));
+                            BufferedWriter buf = new BufferedWriter(new FileWriter(context.getFilesDir()+"activity.txt", true));
                             buf.write(active_name + " ");
                             buf.write(time + " ");
                             buf.write(category);
                             buf.newLine();
                             buf.close();
 
-                            listItem.add(.getText().toString());//파일에서 가저와서 활동명 띄우기
+                            //listItem.add(.getText().toString()); //파일에서 가저와서 활동명 띄우기
                             adapter.notifyDataSetChanged(); // 변경되었음을 어답터에 알려준다.
 
                         } catch (FileNotFoundException e){
