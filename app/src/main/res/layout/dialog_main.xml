@@ -60,7 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="활동명 : "
-            android:textSize="25dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
             />
 
         <EditText
@@ -80,7 +82,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="시작 시간 : "
-            android:textSize="25dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
 
 
             />
@@ -101,7 +105,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="끝난 시간 : "
-            android:textSize="25dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
 
 
             />
