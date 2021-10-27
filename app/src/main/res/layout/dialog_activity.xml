@@ -1,53 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:layout_margin="15dp"
+    android:background="#F0F0D0"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <RadioGroup
+        android:id="@+id/rg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
+
         <RadioButton
+            android:id="@+id/rb_study"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="학습"
-            android:id="@+id/rb_study"
-            />
+            android:textColor="#ff6a00" />
+
         <RadioButton
+            android:id="@+id/rb_hobby"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="취미"
-            android:id="@+id/rb_hobby"
+            android:textColor="#ff6a00"
+
 
             />
+
         <RadioButton
+            android:id="@+id/rb_rest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="여가생활"
-            android:id="@+id/rb_rest"
+            android:textColor="#ff6a00"
+
             />
     </RadioGroup>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="활동 명 : "/>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edt_name"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="목표시간 : "/>
+        android:orientation="vertical">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/total"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="활동 명 : "
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/edt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="활동을 입력하세요." />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="목표시간 : "
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="활동의 목표시간을 입력하세요."
+
+            />
+    </LinearLayout>
+
 
 </LinearLayout>
