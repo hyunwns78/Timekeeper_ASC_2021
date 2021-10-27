@@ -36,7 +36,8 @@
             android:textSize="20dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/button_insert"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
 
     </LinearLayout>
