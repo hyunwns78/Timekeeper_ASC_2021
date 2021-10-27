@@ -39,7 +39,7 @@
             android:id="@+id/rb_rest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="여가 활동"
+            android:text="여가생활"
             android:textColor="#ff6a00"
             android:textStyle="bold"
 
