@@ -2,30 +2,22 @@ package org.techtown.tab;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import com.github.mikephil.charting.charts.BarChart;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 
@@ -96,8 +88,8 @@ public class fragment_activity extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomDialog dialog = new CustomDialog(context);
-                dialog.setDialogListener(new CustomDialog.CustomDialogListener() {
+                CustomDialog_activity dialog = new CustomDialog_activity(context);
+                dialog.setDialogListener(new CustomDialog_activity.CustomDialogListener() {
                     @Override
                     public void onPositiveClicked(String active_name, String time) {
 

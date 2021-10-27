@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+
+    >
+    <LinearLayout
+        android:layout_width="350dp"
+
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/mrg"
+            android:layout_marginBottom="40dp"
+
+            >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="공부"
+                android:id="@+id/mrb_study"
+                android:textColor="#ff6a00"
+                android:textStyle="bold"
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="취미"
+                android:id="@+id/mrb_hobby"
+                android:textColor="#ff6a00"
+                android:textStyle="bold"
+
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여가 활동"
+                android:id="@+id/mrb_rest"
+                android:textColor="#ff6a00"
+                android:textStyle="bold"
+
+                />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350dp"
+
+        android:layout_height="68dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="활동명 : "
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/medt_name"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="350dp"
+
+        android:layout_height="68dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시작 시간 : "
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/medt_start"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="350dp"
+
+        android:layout_height="68dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="끝난 시간 : "
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/medt_finish"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="취소"
+            android:layout_marginRight="65dp"
+            android:id="@+id/can_button"/>
+
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:text="추가" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class CustomDialog extends Dialog implements View.OnClickListener{
+public class CustomDialog_main extends Dialog implements View.OnClickListener{
 
     private Button positiveButton;
     private Button negativeButton;
@@ -15,9 +15,9 @@ public class CustomDialog extends Dialog implements View.OnClickListener{
     private EditText act_time;
     private Context context;
 
-    private CustomDialogListener customDialogListener;
+    private CustomDialog_activity.CustomDialogListener customDialogListener;
 
-    public CustomDialog(Context context){
+    public CustomDialog_main(Context context){
         super(context);
         this.context = context;
     }
@@ -27,7 +27,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener{
         void onNegativeClicked();
     }
 
-    public void setDialogListener(CustomDialogListener customDialogListener){
+    public void setDialogListener(CustomDialog_activity.CustomDialogListener customDialogListener){
         this.customDialogListener = customDialogListener;
     }
 
@@ -35,7 +35,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.add_dialog);
+        setContentView(R.layout.add_dialog_activity);
 
         positiveButton = (Button) findViewById(R.id.add_button);
         negativeButton = (Button) findViewById(R.id.can_button);

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
@@ -24,6 +25,9 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class fragment_main extends Fragment {
@@ -35,7 +39,7 @@ public class fragment_main extends Fragment {
     Bundle bundle;
     ImageView btnrec;
     View dialogView;
-
+    Button button;
 
     @Nullable
     @Override
@@ -57,10 +61,48 @@ public class fragment_main extends Fragment {
             }
         });
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomDialog_activity dialog = new CustomDialog_activity(context);
+                dialog.setDialogListener(new CustomDialog_activity.CustomDialogListener() {
+                    @Override
+                    public void onPositiveClicked(String active_name, String starttime, String endtime) {
+
+                        try{
+                            BufferedWriter buf = new BufferedWriter(new FileWriter(context.getFilesDir()+"test.txt", true));
+                            buf.write(active_name + " ");
+                            buf.write(starttime + " ");
+                            buf.write(endtime+" ");
+                            buf.newLine();
+                            buf.close();
+                        } catch (FileNotFoundException e){
+                            e.printStackTrace();
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onPositiveClicked(String active_name, String time) {
+
+                    }
+
+                    @Override
+                    public void onNegativeClicked() {
+
+                    }
+                });
+                dialog.show();
+            }
+        });
+
         initUI(rootView);
         initImage(rootView);
 
         return rootView;
+
+
     }
 
     public void initImage(ViewGroup rootView){
