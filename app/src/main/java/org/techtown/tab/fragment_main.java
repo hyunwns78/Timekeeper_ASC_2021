@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -49,7 +50,19 @@ public class fragment_main extends Fragment {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);
         context = container.getContext();
-        btnrec= inflate.findViewById(R.id.btnrec);
+        btnrec= rootView.findViewById(R.id.btnrec);
+        btnrec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogView = (View)View.inflate(context,R.layout.dialog1, null);
+                AlertDialog.Builder dig = new AlertDialog.Builder(context);
+                dig.setTitle("오늘 활동 기록");
+                dig.setView(dialogView);
+                dig.setPositiveButton("확인", null);
+                dig.setNegativeButton("취소", null);
+                dig.show();
+            }
+        });
 
         initUI(rootView);
         initImage(rootView);
