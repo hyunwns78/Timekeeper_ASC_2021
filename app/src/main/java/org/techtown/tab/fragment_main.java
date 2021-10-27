@@ -48,6 +48,7 @@ public class fragment_main extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);
         context = container.getContext();
         btnrec= rootView.findViewById(R.id.btnrec);
+
         btnrec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

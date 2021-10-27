@@ -12,7 +12,7 @@ public class CustomDialog_main extends Dialog implements View.OnClickListener{
     private Button positiveButton;
     private Button negativeButton;
     private EditText act_name;
-    private EditText act_time;
+    private EditText act_starttime,act_endtime;
     private Context context;
 
     private CustomDialog_activity.CustomDialogListener customDialogListener;
@@ -23,7 +23,7 @@ public class CustomDialog_main extends Dialog implements View.OnClickListener{
     }
 
     interface CustomDialogListener{
-        void onPositiveClicked(String active_name, String time);
+        void onPositiveClicked(String active_name, String active_starttime, String active_endtime);
         void onNegativeClicked();
     }
 
@@ -35,12 +35,13 @@ public class CustomDialog_main extends Dialog implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.add_dialog_activity);
+        setContentView(R.layout.add_dialong_main);
 
-        positiveButton = (Button) findViewById(R.id.add_button);
-        negativeButton = (Button) findViewById(R.id.can_button);
-        act_name = (EditText) findViewById(R.id.act_name);
-        act_time = (EditText) findViewById(R.id.act_hour);
+        positiveButton = (Button) findViewById(R.id.madd_button);
+        negativeButton = (Button) findViewById(R.id.mcan_button);
+        act_name = (EditText) findViewById(R.id.medt_name);
+        act_starttime = (EditText) findViewById(R.id.medt_start);
+        act_endtime = (EditText) findViewById(R.id.medt_finish);
 
         positiveButton.setOnClickListener(this);
         negativeButton.setOnClickListener(this);
@@ -49,14 +50,15 @@ public class CustomDialog_main extends Dialog implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.add_button:
-                String activ_name = act_name.getText().toString();
-                String activ_time = act_time.getText().toString();
+            case R.id.madd_button:
+                String active_name = act_name.getText().toString();
+                String active_starttime = act_starttime.getText().toString();
+                String active_endtime = act_endtime.getText().toString();
 
-                customDialogListener.onPositiveClicked(activ_name, activ_time);
+                customDialogListener.onPositiveClicked(active_name, active_starttime, active_endtime);
                 dismiss();
                 break;
-            case R.id.can_button:
+            case R.id.mcan_button:
                 cancel();
                 break;
         }

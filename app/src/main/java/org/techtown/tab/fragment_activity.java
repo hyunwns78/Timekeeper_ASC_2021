@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -20,6 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 public class fragment_activity extends Fragment {
 
@@ -37,6 +40,11 @@ public class fragment_activity extends Fragment {
     RadioGroup rg;
     RadioButton rbtn_study, rbtn_hobby, rbtn_rest;
     Context context;
+
+    ListView listView1;
+    ArrayAdapter<String> adapter;
+    ArrayList<String> listItem;
+
 
     @Override
     public void onAttach(@NonNull Activity activity) {
@@ -57,6 +65,12 @@ public class fragment_activity extends Fragment {
         rbtn_study = inflate.findViewById(R.id.rb_study);
         rbtn_hobby = inflate.findViewById(R.id.rb_hobby);
         rbtn_rest = inflate.findViewById(R.id.rb_rest);
+
+        listItem = new ArrayList<String>();
+        listItem.add("홍길동");
+        listItem.add("이순신");
+        listItem.add("강감찬");
+        listItem.add("조자룡");
 
         this.studyLayout = (LinearLayout) inflate.findViewById(R.id.study);
         this.hobbyLayout = (LinearLayout) inflate.findViewById(R.id.hobby);
@@ -100,11 +114,16 @@ public class fragment_activity extends Fragment {
                             buf.write(category);
                             buf.newLine();
                             buf.close();
+
+                            listItem.add(.getText().toString());//파일에서 가저와서 활동명 띄우기
+                            adapter.notifyDataSetChanged(); // 변경되었음을 어답터에 알려준다.
+
                         } catch (FileNotFoundException e){
                             e.printStackTrace();
                         } catch (Exception e){
                             e.printStackTrace();
                         }
+
                     }
 
                     @Override
