@@ -3,6 +3,7 @@ package org.techtown.tab;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +20,14 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class fragment_activity extends Fragment {
@@ -41,9 +47,8 @@ public class fragment_activity extends Fragment {
     RadioButton rbtn_study, rbtn_hobby, rbtn_rest;
     Context context;
 
-    ListView listView1;
-    ArrayAdapter<String> adapter;
-    ArrayList<String> listItem;
+    private ListViewAdapter adapter;
+
 
 
     @Override
@@ -58,19 +63,36 @@ public class fragment_activity extends Fragment {
         View inflate = layoutInflater.inflate(R.layout.fragment_activity, viewGroup, false);
         setHasOptionsMenu(true);
 
+        final String filePath = context.getFilesDir().getAbsolutePath();
+        StringBuffer strBuffer = new StringBuffer();
+        try{
+            InputStream is = new FileInputStream(filePath);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            String line;
+            while((line=reader.readLine())!=null){
+                String[] name = line.split(" ");
+                adapter.addItem(name[0]);
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        ListView listView = (ListView) inflate.findViewById(R.id.studyView);
+        adapter = new ListViewAdapter(getActivity());
+        listView.setAdapter(adapter);
+
+        adapter.addItem("자바공부");
+        adapter.addItem("파이");
+
         rg = inflate.findViewById(R.id.rg);
         context= viewGroup.getContext();
-        button = inflate.findViewById(R.id.button_insert);
 
+        button = inflate.findViewById(R.id.button_insert);
         rbtn_study = inflate.findViewById(R.id.rb_study);
         rbtn_hobby = inflate.findViewById(R.id.rb_hobby);
         rbtn_rest = inflate.findViewById(R.id.rb_rest);
 
-        listItem = new ArrayList<String>();
-        listItem.add("홍길동");
-        listItem.add("이순신");
-        listItem.add("강감찬");
-        listItem.add("조자룡");
 
         this.studyLayout = (LinearLayout) inflate.findViewById(R.id.study);
         this.hobbyLayout = (LinearLayout) inflate.findViewById(R.id.hobby);
@@ -115,14 +137,14 @@ public class fragment_activity extends Fragment {
                             buf.newLine();
                             buf.close();
 
-                            //listItem.add(.getText().toString()); //파일에서 가저와서 활동명 띄우기
-                            adapter.notifyDataSetChanged(); // 변경되었음을 어답터에 알려준다.
-
                         } catch (FileNotFoundException e){
                             e.printStackTrace();
                         } catch (Exception e){
                             e.printStackTrace();
                         }
+
+                        adapter.addItem(active_name);
+                        adapter.notifyDataSetChanged();
 
                     }
 
