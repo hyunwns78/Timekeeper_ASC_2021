@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -38,6 +39,9 @@ public class fragment_main extends Fragment {
     ArrayList<Item> itemList;
     Context context;
     Bundle bundle;
+    ImageView btnrec;
+    View dialogView;
+
 
     @Nullable
     @Override
@@ -45,6 +49,7 @@ public class fragment_main extends Fragment {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);
         context = container.getContext();
+        btnrec= inflate.findViewById(R.id.btnrec);
 
         initUI(rootView);
         initImage(rootView);
