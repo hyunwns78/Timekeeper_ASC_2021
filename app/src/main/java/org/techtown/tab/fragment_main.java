@@ -48,6 +48,8 @@ public class fragment_main extends Fragment {
     View dialogView;
     Button button;
     TextView text_category;
+    private Item[] items;
+    public int result;
 
     @Nullable
     @Override
@@ -112,9 +114,11 @@ public class fragment_main extends Fragment {
         snapHelper.attachToRecyclerView(recyclerView);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new Myadapter(insertItem()));
+
     }
 
     ArrayList insertItem(){
+
         itemList = new ArrayList<Item>();
 
         try{
@@ -123,32 +127,25 @@ public class fragment_main extends Fragment {
             inFs.read(txt);
             String str = new String(txt);
             String[] name = str.split(",");
-            Item item = null;
-            Item item2 = null;
 
-            for(int i = 0; i*3 < name.length; i++){
-                item = new Item(name[0], name[1], Integer.parseInt(name[2])-Integer.parseInt(name[1]));
-                item2 = new Item(name[3], name[4], Integer.parseInt(name[5])-Integer.parseInt(name[4]));
+            for(int i = 0; i<20; i++){
+                items = new Item[i];
             }
-            itemList.add(item);
-            itemList.add(item2);
+
+            for(int i = 0; i*3 < name.length-1; i++){
+                int result_hour = ((Integer.parseInt(name[2+i*3])-Integer.parseInt(name[1+i*3]))/100)*60;
+                int result_min = (Integer.parseInt(name[2+i*3])-Integer.parseInt(name[1+i*3]))%100;
+                items[i] = new Item(name[0+i*3], (String.valueOf((result_hour+result_min)/60)+"시간"+String.valueOf((result_hour+result_min)%60) +"분"), result_hour+result_min);
+                itemList.add(items[i]);
+            }
 
             inFs.close();
         } catch (IOException e){
         }
 
-        //Item item1 = new Item("JAVA 공부", "2시간", 2);
-        //Item item2 = new Item("Python 공부", "3시간", 3);
-        //Item item3 = new Item("C언어 공부", "0시간", 0);
-        //Item item4 = new Item("안드로이드 공부", "4시간", 4);
-
-        //itemList.add(item1);
-        //itemList.add(item2);
-        //itemList.add(item3);
-        //itemList.add(item4);
-
         return itemList;
     }
+
 
     private void initUI(ViewGroup rootView){
 
@@ -171,9 +168,35 @@ public class fragment_main extends Fragment {
 
         ArrayList<PieEntry> entries = new ArrayList<>();
 
-        entries.add(new PieEntry(20, "학습"));
-        entries.add(new PieEntry(40, "취미"));
-        entries.add(new PieEntry(40, "여가활동"));
+        try{
+            FileInputStream inFs = context.openFileInput("record.txt");
+            byte[] txt = new byte[600];
+            inFs.read(txt);
+            String str = new String(txt);
+            String[] name = str.split(",");
+
+            for (int i=0;i*3<name.length-1;i++){
+                int result_hour = ((Integer.parseInt(name[2+i*3])-Integer.parseInt(name[1+i*3]))/100)*60;
+                int result_min = (Integer.parseInt(name[2+i*3])-Integer.parseInt(name[1+i*3]))%100;
+                int cal = result_hour+result_min;
+                result = 0;
+                result = result + cal;
+            }
+
+            for(int i = 0; i*3 < name.length-1; i++){
+                int result_hour = ((Integer.parseInt(name[2+i*3])-Integer.parseInt(name[1+i*3]))/100)*60;
+                int result_min = (Integer.parseInt(name[2+i*3])-Integer.parseInt(name[1+i*3]))%100;
+                int cal = result_hour+result_min;
+                int value = (cal/result)*100;
+                entries.add(new PieEntry(value, name[0+i*3]));
+            }
+            inFs.close();
+        } catch (IOException e){
+        }
+
+        //entries.add(new PieEntry(20, "학습"));
+        //entries.add(new PieEntry(40, "취미"));
+        //entries.add(new PieEntry(40, "여가활동"));
 
         PieDataSet dataSet = new PieDataSet(entries, "활동 비율");
 

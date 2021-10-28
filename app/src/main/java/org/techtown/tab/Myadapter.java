@@ -5,15 +5,10 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.github.mikephil.charting.charts.BarChart;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -42,8 +37,8 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.ViewHolder> {
 
         holder.actView.setText(itemList.get(position).getItem_activity());
         holder.timeView.setText(itemList.get(position).getItem_time());
-        holder.ing.getLayoutParams().width = itemList.get(position).getItem_hour()*100;
-        holder.pad.getLayoutParams().width = 1000-itemList.get(position).getItem_hour()*100;
+        holder.ing.getLayoutParams().width = itemList.get(position).getItem_min();
+        holder.pad.getLayoutParams().width = 1000-itemList.get(position).getItem_min();
 
     }
 

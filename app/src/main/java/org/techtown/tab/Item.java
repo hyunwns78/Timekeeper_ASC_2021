@@ -31,9 +31,9 @@ public class Item{
     public String getItem_time(){
         return time;
     }
-    public int getItem_hour(){return hour; }
+    public int getItem_min(){return hour; }
 
-    public void getItem_hour(int hour) {
+    public void getItem_min(int hour) {
         this.hour = hour;
     }
 
