@@ -61,12 +61,16 @@ public class fragment_main extends Fragment {
                     public void onPositiveClicked(String active_name, String starttime, String endtime) {
 
                         try{
-                            BufferedWriter buf = new BufferedWriter(new FileWriter(context.getFilesDir()+"record.txt", true));
-                            buf.write(active_name + " ");
-                            buf.write(starttime + " ");
-                            buf.write(endtime+" ");
-                            buf.newLine();
-                            buf.close();
+                            FileOutputStream outFs = context.openFileOutput("record.txt", Context.MODE_APPEND);
+                            String com = ",";
+                            outFs.write(active_name.getBytes());
+                            outFs.write(com.getBytes());
+                            outFs.write(starttime.getBytes());
+                            outFs.write(com.getBytes());
+                            outFs.write(endtime.getBytes());
+                            outFs.write(com.getBytes());
+                            outFs.close();
+
                         } catch (FileNotFoundException e){
                             e.printStackTrace();
                         } catch (Exception e){

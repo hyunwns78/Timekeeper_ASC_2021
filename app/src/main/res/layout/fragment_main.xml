@@ -18,7 +18,6 @@
             android:background="#F3E0A9"
             android:orientation="horizontal">
 
-
             <TextView
                 android:id="@+id/dateTextView"
                 android:layout_width="match_parent"
