@@ -205,6 +205,7 @@ public class fragment_main extends Fragment {
         data.setValueTextSize(26f);
         data.setValueTextColor(Color.BLACK);
 
+        pieChart.animateXY(2000,2000);
         pieChart.setData(data);
         pieChart.invalidate();
 
