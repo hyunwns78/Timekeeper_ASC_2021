@@ -39,10 +39,12 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+
         holder.actView.setText(itemList.get(position).getItem_activity());
         holder.timeView.setText(itemList.get(position).getItem_time());
         holder.ing.getLayoutParams().width = itemList.get(position).getItem_hour()*100;
         holder.pad.getLayoutParams().width = 1000-itemList.get(position).getItem_hour()*100;
+
     }
 
     public int getItemCount(){

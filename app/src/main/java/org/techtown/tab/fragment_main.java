@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -20,15 +21,20 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class fragment_main extends Fragment {
@@ -41,6 +47,7 @@ public class fragment_main extends Fragment {
     ImageView btnrec;
     View dialogView;
     Button button;
+    TextView text_category;
 
     @Nullable
     @Override
@@ -49,6 +56,7 @@ public class fragment_main extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);
         context = container.getContext();
         btnrec= rootView.findViewById(R.id.btnrec);
+        text_category = rootView.findViewById(R.id.text_category);
 
 
         btnrec.setOnClickListener(new View.OnClickListener() {
@@ -108,15 +116,37 @@ public class fragment_main extends Fragment {
 
     ArrayList insertItem(){
         itemList = new ArrayList<Item>();
-        Item item1 = new Item("JAVA 공부", "2시간", 2);
-        Item item2 = new Item("Python 공부", "3시간", 3);
-        Item item3 = new Item("C언어 공부", "0시간", 0);
-        Item item4 = new Item("안드로이드 공부", "4시간", 4);
 
-        itemList.add(item1);
-        itemList.add(item2);
-        itemList.add(item3);
-        itemList.add(item4);
+        try{
+            FileInputStream inFs = context.openFileInput("record.txt");
+            byte[] txt = new byte[600];
+            inFs.read(txt);
+            String str = new String(txt);
+            String[] name = str.split(",");
+            Item item = null;
+            Item item2 = null;
+
+            for(int i = 0; i*3 < name.length; i++){
+                item = new Item(name[0], name[1], Integer.parseInt(name[2])-Integer.parseInt(name[1]));
+                item2 = new Item(name[3], name[4], Integer.parseInt(name[5])-Integer.parseInt(name[4]));
+            }
+            itemList.add(item);
+            itemList.add(item2);
+
+            inFs.close();
+        } catch (IOException e){
+        }
+
+        //Item item1 = new Item("JAVA 공부", "2시간", 2);
+        //Item item2 = new Item("Python 공부", "3시간", 3);
+        //Item item3 = new Item("C언어 공부", "0시간", 0);
+        //Item item4 = new Item("안드로이드 공부", "4시간", 4);
+
+        //itemList.add(item1);
+        //itemList.add(item2);
+        //itemList.add(item3);
+        //itemList.add(item4);
+
         return itemList;
     }
 
@@ -132,20 +162,18 @@ public class fragment_main extends Fragment {
         pieChart.setTransparentCircleRadius(30f);
         pieChart.setDrawCenterText(true);
         pieChart.setHighlightPerTapEnabled(true);
+
         Legend legend1 = pieChart.getLegend();
         legend1.setEnabled(false);
+
         pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.setEntryLabelTextSize(16f);
 
-        setData1();
-    }
-
-    private void setData1(){
         ArrayList<PieEntry> entries = new ArrayList<>();
 
-        entries.add(new PieEntry(20, "공부"));
-        entries.add(new PieEntry(40, "운동"));
-        entries.add(new PieEntry(40, "휴식"));
+        entries.add(new PieEntry(20, "학습"));
+        entries.add(new PieEntry(40, "취미"));
+        entries.add(new PieEntry(40, "여가활동"));
 
         PieDataSet dataSet = new PieDataSet(entries, "활동 비율");
 
@@ -161,6 +189,23 @@ public class fragment_main extends Fragment {
 
         pieChart.setData(data);
         pieChart.invalidate();
+
+        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                int x = pieChart.getData().getDataSetForEntry(e).getEntryIndex((PieEntry) e);
+
+                String category = entries.get(x).getLabel();
+                text_category.setText(category);
+
+            }
+
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
     }
+
 
 }
