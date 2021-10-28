@@ -205,7 +205,7 @@ public class fragment_main extends Fragment {
         data.setValueTextSize(26f);
         data.setValueTextColor(Color.BLACK);
 
-        pieChart.animateXY(2000,2000);
+        pieChart.animateXY(1000,1000);
         pieChart.setData(data);
         pieChart.invalidate();
 
@@ -215,7 +215,8 @@ public class fragment_main extends Fragment {
                 int x = pieChart.getData().getDataSetForEntry(e).getEntryIndex((PieEntry) e);
 
                 String category = entries.get(x).getLabel();
-                text_category.setText(category);
+                float cal = entries.get(x).getValue();
+                text_category.setText(category+" "+cal+"분");
 
             }
 
