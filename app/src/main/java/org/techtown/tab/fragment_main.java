@@ -175,28 +175,15 @@ public class fragment_main extends Fragment {
             String str = new String(txt);
             String[] name = str.split(",");
 
-            for (int i=0;i*3<name.length-1;i++){
-                int result_hour = ((Integer.parseInt(name[2+i*3])-Integer.parseInt(name[1+i*3]))/100)*60;
-                int result_min = (Integer.parseInt(name[2+i*3])-Integer.parseInt(name[1+i*3]))%100;
-                int cal = result_hour+result_min;
-                result = 0;
-                result = result + cal;
-            }
-
             for(int i = 0; i*3 < name.length-1; i++){
                 int result_hour = ((Integer.parseInt(name[2+i*3])-Integer.parseInt(name[1+i*3]))/100)*60;
                 int result_min = (Integer.parseInt(name[2+i*3])-Integer.parseInt(name[1+i*3]))%100;
                 int cal = result_hour+result_min;
-                int value = (cal/result)*100;
-                entries.add(new PieEntry(value, name[0+i*3]));
+                entries.add(new PieEntry(cal, name[0+i*3]));
             }
             inFs.close();
         } catch (IOException e){
         }
-
-        //entries.add(new PieEntry(20, "학습"));
-        //entries.add(new PieEntry(40, "취미"));
-        //entries.add(new PieEntry(40, "여가활동"));
 
         PieDataSet dataSet = new PieDataSet(entries, "활동 비율");
 
