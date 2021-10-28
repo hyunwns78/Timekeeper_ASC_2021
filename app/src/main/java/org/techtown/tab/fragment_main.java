@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
@@ -49,17 +51,18 @@ public class fragment_main extends Fragment {
     Button button;
     TextView text_category;
     private Item[] items;
-    public int result;
+    fragment_main fragment_main;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+
+        fragment_main = new fragment_main();
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);
         context = container.getContext();
         btnrec= rootView.findViewById(R.id.btnrec);
         text_category = rootView.findViewById(R.id.text_category);
-
 
         btnrec.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,11 +84,17 @@ public class fragment_main extends Fragment {
                             outFs.write(com.getBytes());
                             outFs.close();
 
+
                         } catch (FileNotFoundException e){
                             e.printStackTrace();
                         } catch (Exception e){
                             e.printStackTrace();
                         }
+
+                        Fragment frag = null;
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.container_main, fragment_main).commit();
+
                     }
 
                     @Override
@@ -145,7 +154,6 @@ public class fragment_main extends Fragment {
 
         return itemList;
     }
-
 
     private void initUI(ViewGroup rootView){
 

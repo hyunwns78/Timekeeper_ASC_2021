@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FDFBEA"
+    android:id="@+id/container_main"
     >
 
     <LinearLayout
@@ -86,7 +87,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="공부"
             android:id="@+id/text_category"
             android:textStyle="bold"
             android:textSize="20dp"
